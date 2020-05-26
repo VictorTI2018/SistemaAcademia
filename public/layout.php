@@ -33,7 +33,7 @@
         </aside>
 
         <main class="main">
-            <section class="content z-depth-3">
+            <section class="content shadow-lg">
                 <?php require $layout->load(); ?>
             </section>
         </main>
@@ -44,6 +44,8 @@
 
     <script src="public/assets/js/jquery.min.js"></script>
     <script src="public/assets/js/bootstrap.min.js"></script>
+    <script src="public/assets/js/geral.js"></script>
+    <script src="public/assets/js/app/modalidade/index.js"></script>
 </body>
 
 </html>

@@ -8,7 +8,7 @@ use App\Core\Uri\Uri;
 
 $layout = new Layout();
 
-$links = require __DIR__ . '/router.php';
+$links = require __DIR__ . '/links.php';
 
 $uri = Uri::loadUri();
 

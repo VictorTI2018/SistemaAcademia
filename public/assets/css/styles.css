@@ -98,13 +98,28 @@ body {
 .content {
     position: relative;
     height: 100%;
-    padding: 5px;
+    padding: 10px;
     background-color: #FFF;
     border-radius: 6px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-.page-all_title {
-    height: 60px;
+.page-title_all{
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.modalidades {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.modalidade {
+    flex-basis: 33%;
+    margin-bottom: 10px;
 }
 
 .footer {

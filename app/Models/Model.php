@@ -26,6 +26,16 @@ abstract class Model extends Connection
         $this->db = new Connection();
     }
 
+    public function applyFilter($term)
+    {
+        $query = "SELECT * FROM {$this->table} WHERE nome LIKE :nome OR mensalidade LIKE :mensalidade";
+        $stmt = $this->db->connection()->prepare($query);
+        $stmt->bindValue(':nome', '%' . $term . '%');
+        $stmt->bindValue(':mensalidade', '%' . $term . '%');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     /**
      * Método padrão para buscar todos os dados
      *
@@ -102,11 +112,11 @@ abstract class Model extends Connection
         return $stmt->execute($data);
     }
 
-    public function delete($where)
+    public function delete($value)
     {
-        $whereKey = array_keys($where);
-        $query = " DELETE FROM {$this->table} WHERE {$whereKey[0]} = :{$whereKey[0]}";
+        $query = " DELETE FROM {$this->table} WHERE {$this->primaryKey} = :id";
         $stmt = $this->db->connection()->prepare($query);
-        return $stmt->execute($where);
+        $stmt->bindValue(':id', $value);
+        return $stmt->execute();
     }
 }
