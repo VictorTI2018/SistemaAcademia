@@ -35,7 +35,9 @@
         </aside>
 
         <main class="main">
-
+            <section class="content">
+                <?php require $layout->load(); ?>
+            </section>
         </main>
         <footer class="footer">
 

@@ -4,15 +4,18 @@
 require __DIR__ . '/bootstrap/app.php';
 
 use App\Core\Template\Layout;
+use App\Core\Uri\Uri;
 
 $layout = new Layout();
 
-use App\Models\Aluno\Aluno;
+$links = require __DIR__ . '/router.php';
 
-$aluno = new Aluno();
+$uri = Uri::loadUri();
 
-
-var_dump($aluno->findWithJoin(2));
-die();
-
+if(!Uri::validRouterInUri($uri, $links)) {
+    $layout->add("404");
+    require $layout->master("layout");
+}
+$router = Uri::validRouterInUri($uri, $links);
+require $router;
 require $layout->master("layout");
