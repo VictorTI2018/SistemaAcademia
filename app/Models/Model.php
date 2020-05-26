@@ -14,6 +14,8 @@ abstract class Model extends Connection
 
     protected $columns;
 
+    protected $primaryKey;
+
     /** @var \App\Core\Database\Connection */
     protected $db;
 
@@ -58,37 +60,32 @@ abstract class Model extends Connection
     /**
      * Método padrão para buscar apenas um registro do banco
      *
-     * @param array $where
+     * @param int $value
      * @return void
      */
-    public function find($where)
+    public function find($value)
     {
-        $whereKey = array_keys($where);
         $query = "SELECT * FROM {$this->table} ";
-        $query .= " WHERE {$whereKey[0]} = :{$whereKey[0]}";
+        $query .= " WHERE {$this->primaryKey} = :id";
         $stmt = $this->db->connection()->prepare($query);
-        $stmt->execute($where);
+        $stmt->bindValue(':id', $value);
+        $stmt->execute();
         return $stmt->fetch();
     }
 
-    /**
-     * Método padrão para buscar apenas um registro com join
-     *
-     * @param array $where
-     * @return void
-     */
-    public function findWithJoin($where)
+
+    public function findWithJoin($value)
     {
-        $whereKey = array_keys($where);
-        $query = "SELECT * FROM {$this->table} as t";
+        $query = "SELECT * FROM {$this->table} as t ";
         if ($this->join && count($this->join) > 0) {
             foreach ($this->join as $key => $value) {
                 $query .= " INNER JOIN {$key}  ON t.{$value} = {$key}.id";
             }
         }
-        $query .= " WHERE t.{$whereKey[0]} = :{$whereKey[0]}";
+        $query .= " WHERE t.{$this->primaryKey} = {$value}";
         $stmt = $this->db->connection()->prepare($query);
-        $stmt->execute($where);
+        $stmt->bindValue(':{$value}', $value);
+        $stmt->execute();
         return $stmt->fetch();
     }
 
@@ -103,5 +100,13 @@ abstract class Model extends Connection
         $query = PersistDB::insert($this->table, $this->columns);
         $stmt = $this->db->connection()->prepare($query);
         return $stmt->execute($data);
+    }
+
+    public function delete($where)
+    {
+        $whereKey = array_keys($where);
+        $query = " DELETE FROM {$this->table} WHERE {$whereKey[0]} = :{$whereKey[0]}";
+        $stmt = $this->db->connection()->prepare($query);
+        return $stmt->execute($where);
     }
 }
