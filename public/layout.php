@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Strong Fitness</title>
-    <link rel="stylesheet" href="public/assets/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="public/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/assets/css/styles.css">
 </head>
 
@@ -14,7 +14,7 @@
     <div id="layout">
         <header class="header">
             <div class="header-user_info">
-                <p class="user_info-title">Victor Hugo</p>
+                <div class="user_info-title">Victor Hugo</div>
                 <img class="user_info-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
             </div>
         </header>
@@ -24,18 +24,16 @@
                 <a href="#" class="brand-logo">Strong Fitness</a>
             </div>
             <div class="aside-links">
-
-
-                <a href=""><i class="material-icons left">add_circle</i>Modalidade</a>
-                <a href=""><i class="material-icons left">add_circle</i>Aluno</a>
-                <a href=""><i class="material-icons left">person</i>Perfil</a>
-                <a href=""><i class="material-icons left">exit_to_app</i>Sair</a>
+                <a href="/modalidades"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Modalidade</a>
+                <a href=""><i class="fa fa-plus mr-2" aria-hidden="true"></i>Aluno</a>
+                <a href=""><i class="fa fa-user mr-2" aria-hidden="true"></i>Perfil</a>
+                <a href=""><i class="fa fa-sign-out mr-2" aria-hidden="true"></i>Sair</a>
 
             </div>
         </aside>
 
         <main class="main">
-            <section class="content">
+            <section class="content z-depth-3">
                 <?php require $layout->load(); ?>
             </section>
         </main>
@@ -43,6 +41,9 @@
 
         </footer>
     </div>
+
+    <script src="public/assets/js/jquery.min.js"></script>
+    <script src="public/assets/js/bootstrap.min.js"></script>
 </body>
 
 </html>

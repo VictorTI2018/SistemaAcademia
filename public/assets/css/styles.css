@@ -78,9 +78,11 @@ body {
 
 .aside-links a {
     color: #FFF;
+    font-weight: bold;
     font-size: 1rem;
     text-decoration: none;
-    padding: 10px 20px
+    padding: 10px 20px;
+    border-bottom: 1px solid #DDD;
 }
 
 .aside-links a:hover {
@@ -91,6 +93,18 @@ body {
     height: calc(100vh - 180px);
     padding: 25px;
     background-color: rgba(221, 221, 221, 0.602);
+}
+
+.content {
+    position: relative;
+    height: 100%;
+    padding: 5px;
+    background-color: #FFF;
+    border-radius: 6px;
+}
+
+.page-all_title {
+    height: 60px;
 }
 
 .footer {

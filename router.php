@@ -2,5 +2,6 @@
 
 return [
     '/' => 'home/index',
-    '/criar_modalidade' => 'modalidades/register'
+    '/modalidades' => 'modalidade/view_all',
+    '/criar_modalidade' => 'modalidade/register'
 ];
