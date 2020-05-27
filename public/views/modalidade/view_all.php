@@ -1,9 +1,9 @@
 <div class="page-title_all">
     <div class="row mb-2">
         <div class="col-md-3">
-            <button class="btn btn-success btn-block">
+            <a href="/criar_modalidade" class="btn btn-success btn-block">
                 Nova Modalidade
-            </button>
+            </a>
         </div>
     </div>
 
@@ -36,7 +36,8 @@
                         </div>
                         <div class="col-md-6">
 
-                            <button class="btn btn-danger btn-block">Excluir</button>
+                            <button class="btn btn-danger btn-block"
+                            onclick="removerMod(<?= $value->id; ?>)">Excluir</button>
                         </div>
                     </div>
                 </div>

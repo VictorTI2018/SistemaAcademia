@@ -16,4 +16,6 @@ class Aluno extends Model
     ];
 
     protected $join = ['modalidades' => 'modalidade_id', 'users' => 'user_id'];
+
+    
 }
